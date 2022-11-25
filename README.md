@@ -4,16 +4,14 @@ Toma coordenadas de latitud y longitud en formato geodésico y le aplica formula
 Investigaciones sacadas de :
 
 
-//Test en https://www.apsalin.com/utm-to-geodetic-on-ellipsoid/
-/**
- * Gracias especiales a https://github.com/ctt-gob-es/allocalgis
-	Coticchia-Surace
+Test en https://www.apsalin.com/utm-to-geodetic-on-ellipsoid/
+
+ * Gracias especiales a los matemáticos Coticchia-Surace y a la implementación de https://github.com/ctt-gob-es/allocalgis
 	
- 	https://es.wikipedia.org/wiki/WGS84
+	
+ *	https://es.wikipedia.org/wiki/WGS84
 
-	https://www.academia.edu/9291952/Aprende_a_convertir_coordenadas_geograficas_en_UTM_y_UTM_en_geograficas
+ *	https://www.academia.edu/9291952/Aprende_a_convertir_coordenadas_geograficas_en_UTM_y_UTM_en_geograficas
 
-	https://bibdigital.epn.edu.ec/bitstream/15000/19364/1/CD-8745.pdf
- * 
- *
- */
+ *	https://bibdigital.epn.edu.ec/bitstream/15000/19364/1/CD-8745.pdf
+ 
