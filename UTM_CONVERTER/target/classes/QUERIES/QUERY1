@@ -1,0 +1,38 @@
+USE [TestMonitorDB]
+GO
+/****** Object:  StoredProcedure [dbo].[actualizarCoordenadasUTM]    Script Date: 15/11/2022 03:46:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+create procedure [dbo].[actualizarCoordenadasUTM] @site_no int,@latitude_utm varchar(max),@longitude_utm varchar(max)
+as
+--si existe en site_options
+declare @contador integer
+SELECT @contador=count(1) FROM SITE_OPTION where option_id='LAT' AND site_no=@site_no
+IF (@contador<>0)
+--actualizar dato
+BEGIN
+update site_option set option_value=@latitude_utm where option_id='LAT' AND site_no=@site_no
+END
+ELSE --si no existe, crearlo
+BEGIN
+INSERT INTO SITE_OPTION 
+(site_no,option_id,option_value,change_user,change_date,utc_date)
+values(@site_no,'LAT',@latitude_utm,1,GETDATE(),GETDATE())
+END
+
+SET @contador=0;--setear rowcount a cero para preguntar por longitud ahora
+--misma lógica, si existe el dato longitud en site_option para ese site actualizarlo
+SELECT @contador=count(1) FROM SITE_OPTION where option_id='LON' AND site_no=@site_no
+IF (@contador<>0)
+BEGIN
+update site_option set option_value='LON2' where option_id='LON' AND site_no=191547
+END
+ELSE--si no existe, crearlo
+BEGIN
+INSERT INTO SITE_OPTION 
+(site_no,option_id,option_value,change_user,change_date,utc_date)
+values(@site_no,'LON',@longitude_utm,1,GETDATE(),GETDATE())
+END
